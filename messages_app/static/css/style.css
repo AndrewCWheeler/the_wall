@@ -1,0 +1,7 @@
+.navbar {
+    border-bottom: 1px solid black;
+}
+
+#message_box {
+    outline: 1px solid black;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row m-2 navbar">
+            <!--title bar -->
+            <div class="col-3">
+                <h4>CodingDojo</h4>
+            </div>
+            <div class="col-5">
+                
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="col-2"></div>
+            <div class="col-8 m-2 p-2">
+                <h1 class="text-center m-3">Register</h1>
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <form id='register' action="/home/registering" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="first_name" class="col-3 col-form-label">First Name</label>
+                        <div class="col-7">
+                            <input type="text" name="first_name" class="form-control" id="first_name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="last_name" class="col-3 col-form-label">Last Name</label>
+                        <div class="col-7">
+                            <input type="text" name="last_name" class="form-control" id="last_name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-3 col-form-label">Email</label>
+                        <div class="col-7">
+                            <input type="text" name="email" class="form-control" id="email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-3 col-form-label">Password</label>
+                        <div class="col-7">
+                            <input type="password" name="password" class="form-control" id="password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="confirm_password" class="col-3 col-form-label">Confirm Password</label>
+                        <div class="col-7">
+                            <input type="password" name="confirm_password" class="form-control" id="confirm_password">
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <button class="btn btn-primary" type="submit">Register</button>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col text-center mt-5">
+                        <p class="m-2">Already registered?</p>
+                        <a href="/home/login">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</body>
+</html>

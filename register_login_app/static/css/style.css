@@ -1,0 +1,11 @@
+.navbar {
+    border-bottom: 1px solid black;
+}
+
+.error {
+    color: red;
+}
+
+.messages {
+    color: red;
+}

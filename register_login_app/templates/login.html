@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row m-2 navbar">
+            <!--title bar -->
+            <div class="col-3">
+                <h4>CodingDojo</h4>
+            </div>
+            <div class="col-5">
+                
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="col-2"></div>
+            <div class="col-8 m-2 p-2">
+                <h1 class="text-center m-3">Login</h1>
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <form id='login' action="/home/logging" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-7">
+                            <input type="text" name="email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-3 col-form-label">Password</label>
+                        <div class="col-sm-7">
+                            <input type="password" name="password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <button class="btn btn-primary" type="submit">Login</button>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col text-center mt-5">
+                        <p class="m-2">Don't have an account?</p>
+                        <a href="/home">Sign-up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
